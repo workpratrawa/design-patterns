@@ -30,7 +30,7 @@ class DataProcessor(IDataProcessor):
             raise Exception("data is not divisible by 2")
 
 
-class LoggingDecorator(IDataProcessor):
+class ILoggingDecorator(IDataProcessor):
 
     @abstractmethod
     def __init__(self, data_processor):
@@ -41,43 +41,44 @@ class LoggingDecorator(IDataProcessor):
         pass
 
 
-class ExecutionTimeDecorator(LoggingDecorator):
+class ExecutionTimeDecorator(ILoggingDecorator):
 
     def __init__(self, data_processor):
         self.data_processor = data_processor
     
     def process(self, data):
-        start_datetime = datetime.now()
-        even, data_by_2 = self.data_processor.process(data)
-        end_datetime = datetime.now()
-        execution_time = end_datetime-start_datetime
-        print(f"Execution Time: {execution_time.seconds}")
-        return even, data_by_2
+        start = time.perf_counter()
+        try:
+            return self.data_processor.process(data)
+        finally:
+            end = time.perf_counter()
+            print(f"Execution Time: {end - start:.4f}s")
 
 
-class IOLoggingDecorator(LoggingDecorator):
+class IOLoggingDecorator(ILoggingDecorator):
 
     def __init__(self, data_processor):
         self.data_processor = data_processor
     
     def process(self, data):
         print(f"Input: {data}")
-        even, data_by_2 = self.data_processor.process(data)
-        print(f"Ouput: {data_by_2}")
-        return even, data_by_2
+        result = self.data_processor.process(data)
+        print(f"Ouput: {result}")
+        return result
 
 
-class ExceptionLoggingDecorator(LoggingDecorator):
+class ExceptionLoggingDecorator(ILoggingDecorator):
 
     def __init__(self, data_processor):
         self.data_processor = data_processor
     
     def process(self, data):
         try:
-            even, data_by_2 = self.data_processor.process(data)
-            return even, data_by_2
+            result = self.data_processor.process(data)
+            return result
         except Exception as e:
             print(f"Exception Occured: {e}")
+            raise
 
 
 ## Runner Code
