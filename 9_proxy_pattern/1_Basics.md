@@ -62,7 +62,7 @@ proxy.request(); // RealService is created only now, inside the proxy
 
 ```
 
-## Types of Proxy Patterns
+## 5. Types of Proxy Patterns
 
 To understand how Proxies work in the real world, it helps to see how they intercept calls for different purposes. Here are examples of the four most common types.
 
@@ -167,7 +167,7 @@ class DatabaseProxy {
 | **Caching** | Store previous results | Speed/Efficiency |
 
 
-## Basic UML Diagram
+## 6. Basic UML Diagram
 ![alt text](image.png)
 
 Here is the Python implementation of the Proxy pattern as described in your UML diagram. In Python, we use the `abc` (Abstract Base Classes) module to define the **Subject** interface.
