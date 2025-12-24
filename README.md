@@ -72,17 +72,4 @@ Contributions are welcome. Suggested workflow:
 3. Make changes and add tests where appropriate.
 4. Open a pull request describing your change.
 
-If you'd like, I can create branches and push the new README.md for you.
 
-## License
-
-No LICENSE file was found in the repository at the time this README was created. Please add a license file to make the repository licensing explicit (e.g., MIT, Apache-2.0).
-
-## Contact
-
-If you want me to:
-- Commit this README to the repository,
-- Add a LICENSE file (I can suggest an MIT template),
-- Create tests or refactor examples into a package,
-
-tell me which action to take and I'll create the branch and push the changes.
