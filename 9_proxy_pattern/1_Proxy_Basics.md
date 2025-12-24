@@ -15,6 +15,11 @@ The Proxy pattern provides a **surrogate or placeholder** for another object to 
 
 The **Proxy** and **Decorator** patterns are both structural design patterns that use a "wrapper" approach to provide a level of indirection. While they look similar in code, their **intent** and how they manage the object they wrap are quite different.
 
+```
+Proxies are about boundaries, not pipelines.
+Decorators are about pipelines, not boundaries.
+```
+
 The main difference lies in **what** the wrapper is trying to achieve.
 
 | Feature | Proxy Pattern | Decorator Pattern |
